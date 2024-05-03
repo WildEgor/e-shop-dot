@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-03T16:16:28.492Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="U3jlO_BAwiSdbAIBd1c0" version="24.3.1" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2024-05-03T16:18:50.821Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="M7Pcp5xCMTXkeH7Glv0W" version="24.3.1" type="github" pages="2">
   <diagram name="Architecture" id="OhPh5uLx-wJ6edmDWOby">
     <mxGraphModel dx="2389" dy="2014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -549,10 +549,13 @@
     </mxGraphModel>
   </diagram>
   <diagram id="mafsElPpFmZ0ZeTwdVgu" name="ER">
-    <mxGraphModel dx="10383" dy="4549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="11945" dy="5394" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="MoWw66BnSg2V7cFkeSnZ-784" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-3440" y="-20" width="1950" height="1290" as="geometry" />
+        </mxCell>
         <mxCell id="MoWw66BnSg2V7cFkeSnZ-782" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-3620" y="1280" width="2340" height="1600" as="geometry" />
         </mxCell>
@@ -2628,7 +2631,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="MoWw66BnSg2V7cFkeSnZ-390" value="&lt;span style=&quot;font-weight: 400; text-align: left; text-wrap: wrap;&quot;&gt;DictionarySchema&lt;/span&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="-920" y="1820" width="280" height="180" as="geometry">
+          <mxGeometry x="-2220" y="830" width="280" height="180" as="geometry">
             <mxRectangle x="-210" y="1090" width="110" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2698,7 +2701,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="MoWw66BnSg2V7cFkeSnZ-400" value="Types" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="-520" y="1850" width="140" height="60" as="geometry" />
+          <mxGeometry x="-1820" y="860" width="140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="MoWw66BnSg2V7cFkeSnZ-401" value="DELIVERY_METHODS" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="MoWw66BnSg2V7cFkeSnZ-400">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
@@ -3662,6 +3665,9 @@
         </mxCell>
         <mxCell id="MoWw66BnSg2V7cFkeSnZ-783" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;SKU Domain&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-3270" y="1600" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="MoWw66BnSg2V7cFkeSnZ-785" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;Dictionary Domain&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-3300" y="220" width="280" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
