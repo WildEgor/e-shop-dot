@@ -1,0 +1,37 @@
+listener:
+  slotName: replication_slot
+  refreshConnection: 30s
+  heartbeatInterval: 10s
+  filter:
+    tables:
+      my_table:
+        - insert
+        - update
+  topicsMap:
+    test: ""
+
+logger:
+  level: info
+  fmt: json
+
+database:
+  host: postgres_primary
+  port: 5432
+  name: e_shop_db
+  user: postgres
+  password: postgres
+  debug: false
+
+publisher:
+  type: rabbitmq
+  address: amqp://guest:guest@event_bus:5672/
+  enable_tls: true # Kafka only
+  client_cert: "cert.pem" # Kafka only
+  client_key: "key.pub" # Kafka only
+  ca_cert: "ca.pem" # Kafka only
+  topic: "wal_listener"
+  topicPrefix: ""
+
+monitoring:
+  sentryDSN: ""
+  promAddr: ":2112"

@@ -17,6 +17,8 @@ x-postgres-common:
 
 volumes:
   mongodb_data:
+  postgres_primary_data:
+  postgres_replica_data:
   redis_data:
   rabbitmq_data:
   rabbitmq_logs:
@@ -25,9 +27,9 @@ volumes:
 services:
 
 ### --------------------------------- LOAD BALANCER --------------------------------- ###
-  gateway:
-    hostname: gateway
-    container_name: gateway
+  api_gateway:
+    hostname: api_gateway
+    container_name: api_gateway
     build:
       context: ./gateway
       dockerfile: ./Dockerfile # Using Nginx as Gateway
@@ -37,16 +39,16 @@ services:
 ### --------------------------------- LOAD BALANCER END --------------------------------- ###
 
 ### --------------------------------- MESSAGE BROKER --------------------------------- ###
-  g-rabbitmq:
-    hostname: g-rabbitmq
+  event_bus:
+    hostname: event_bus
     image: rabbitmq:3-management-alpine
-    container_name: "g-rabbitmq"
+    container_name: "event_bus"
     restart: unless-stopped
     env_file:
       - .env
-    environment:
-      - RABBITMQ_USER=${AMQP_USERNAME}
-      - RABBITMQ_PASSWORD=${AMQP_PASSWORD}
+#    environment:
+#      - RABBITMQ_USER=${AMQP_USERNAME}
+#      - RABBITMQ_PASSWORD=${AMQP_PASSWORD}
     ports:
       - ${AMQP_PORT}:5672
       - ${AMQP_MANAGER_PORT}:15672
@@ -56,11 +58,11 @@ services:
 ### --------------------------------- MESSAGE BROKER END --------------------------------- ###
 
 ### --------------------------------- STORAGES --------------------------------- ###
-  g-postgre_primary:
+  postgres_primary:
     <<: *postgres-common
     hostname: postgres_primary
-    ports:
-      - 5432:5432
+#    ports:
+#      - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
@@ -75,9 +77,10 @@ services:
       -c max_replication_slots=10 
       -c hot_standby_feedback=on
     volumes:
-      - ./postgre/scripts:/docker-entrypoint-initdb.d
+      - ./postgres/scripts:/docker-entrypoint-initdb.d
+      - postgres_primary_data:/var/lib/postgresql/data
 
-  g-postgre_replica:
+  postgres_replica:
     <<: *postgres-common
     ports:
       - 5433:5432
@@ -95,12 +98,38 @@ services:
       chmod 0700 /var/lib/postgresql/data
       postgres
       "
+    volumes:
+      - postgres_replica_data:/var/lib/postgresql/data
     depends_on:
-      - g-postgre_primary
+      - postgres_primary
 
-  g-mongodb:
+  pgbouncer:
+    image: edoburu/pgbouncer
+    container_name: pgbouncer
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgres_primary
+      - AUTH_TYPE=scram-sha-256
+      - POOL_MODE=transaction
+      - ADMIN_USERS=postgres,dbuser
+    ports:
+      - 5432:5432
+    depends_on:
+      - postgres_replica
+
+  wal:
+    container_name: wal
+    image: ihippik/wal-listener
+    volumes:
+      - ./postgres/wal/config.yml:/app/config.yml
+    depends_on:
+      - postgres_primary
+      - event_bus
+
+  mongodb:
     image: mongo
-    hostname: g-mongodb
+    hostname: mongodb
     restart: unless-stopped
     env_file:
       - .env
@@ -117,7 +146,7 @@ services:
 ### --------------------------------- STORAGES END --------------------------------- ###
 
 ### --------------------------------- CACHE --------------------------------- ###
-  g-redis:
+  redis:
     image: redis:alpine
     restart: always
     command: redis-server --appendonly yes
@@ -130,7 +159,7 @@ services:
 ### --------------------------------- CACHE END --------------------------------- ###
 
 ### --------------------------------- S3 --------------------------------- ###
-  g-minio:
+  minio:
     image: minio/minio:RELEASE.2024-01-13T07-53-03Z
     hostname: minio
     volumes:
@@ -151,9 +180,9 @@ services:
 ### --------------------------------- S3 END --------------------------------- ###
 
 ### --------------------------------- CLICKHOUSE --------------------------------- ###
-  g-zookeeper:
+  zookeeper:
     image: bitnami/zookeeper:3.7.1
-    container_name: g-zookeeper
+    container_name: zookeeper
     hostname: zookeeper
     user: root
     ports:
@@ -167,9 +196,9 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
       - ZOO_AUTOPURGE_INTERVAL=1
 
-  g-clickhouse:
+  clickhouse:
     image: clickhouse/clickhouse-server:23.11.1-alpine
-    container_name: g-clickhouse
+    container_name: clickhouse
     hostname: clickhouse
     ports:
       - "9000:9000"
@@ -186,7 +215,7 @@ services:
     restart: on-failure
     tty: true
     depends_on:
-      - g-zookeeper
+      - zookeeper
     logging:
       options:
         max-size: 50m
@@ -212,7 +241,7 @@ services:
 ### --------------------------------- CLICKHOUSE END --------------------------------- ###
 
 ### --------------------------------- MOCK SERVICES --------------------------------- ###
-  g-maildev:
+  maildev:
     image: axllent/mailpit
     container_name: gmaildev
     hostname: gmaildev

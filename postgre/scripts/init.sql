@@ -1,1 +1,0 @@
-CREATE DATABASE gs_db;
