@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-05-06T11:18:23.082Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="k8N6Yl2OFSh4s2rAYUMm" version="24.3.1" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2024-05-06T11:21:27.370Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="D-7nAR-yV4Wh0UJ5t1zA" version="24.3.1" type="github" pages="3">
   <diagram name="Microservices architecture" id="OhPh5uLx-wJ6edmDWOby">
-    <mxGraphModel dx="2849" dy="1503" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1995" dy="1043" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1028,6 +1028,19 @@
         </mxCell>
         <mxCell id="x_50DxsqoAqqxsUCjFwo-31" value="Product Service team" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="2230" y="640" width="133" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="x_50DxsqoAqqxsUCjFwo-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;curved=1;" edge="1" parent="1" source="x_50DxsqoAqqxsUCjFwo-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2200" y="168" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2036" y="-18" />
+              <mxPoint x="2032" y="-18" />
+              <mxPoint x="2032" y="168" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x_50DxsqoAqqxsUCjFwo-41" value="&lt;span style=&quot;font-family: Söhne, ui-sans-serif, system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, Ubuntu, Cantarell, &amp;quot;Noto Sans&amp;quot;, sans-serif, &amp;quot;Helvetica Neue&amp;quot;, Arial, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Now development teams are responsible for specific areas of the shared application without interfering with each other. Yes, there are teams that may be common to all (testers, DevOps), but overall there is a distribution based on areas of responsibility. Ideally, services should not directly impact each other.&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1898.0042857142862" y="-322.9985714285713" width="550" height="119" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
