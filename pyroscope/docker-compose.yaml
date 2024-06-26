@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  pyroscope:
+    image: grafana/pyroscope
+    ports:
+      - "4040:4040"

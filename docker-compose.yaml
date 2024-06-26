@@ -2,6 +2,7 @@ version: "3.7"
 
 include:
   - ./signoz/docker-compose.yaml
+  - ./pyroscope/docker-compose.yaml
 
 # Shared Postgres Replica configs
 x-postgres-common:
